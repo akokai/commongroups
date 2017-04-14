@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{title}</title>
+    <style>
+{>common.css/}
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <h1>{title}</h1>
+      <table style="margin: 16px -8px 24px -8px">
+        <thead>
+          <tr>
+            <th>ID</th> <th>Name</th> <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          {#items}
+          <tr>
+            <td><b><a href="{cmg_id}.html">{cmg_id}</a></b></td>
+            <td><a href="{cmg_id}.html">{name}</a></td>
+            <td>{notes}</td>
+          </tr>
+          {/items}
+        </tbody>
+      </table>
+      {?formats}
+      <h4 class="noblock">Other formats</h4>
+      {#formats}
+      &nbsp; <a href="../cmgroups.{.}">{.}</a>
+      {/formats}
+      {:else}
+      {/formats}
+    </div>
+  </body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{name}</title>
+    <style>
+{>common.css/}
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <div class="header_left">
+        <h2 class="noblock">{name}</h2>
+      </div>
+      <div class="header_right">
+        <a onclick="document.body.scrollTop = 0; document.documentElement.scrollTop = 0;" href="#">&#x25b4; top</a> &nbsp;
+        <a href="index.html">&#x25c2; back</a>
+      </div>
+    </div>
+
+    {?info}
+    <div class="infoblock">
+      <table>
+        <tbody>
+          {#info}
+          <tr><th class="right">About</th> <td>{about|s}</td></tr>
+          <tr><th class="right">Notes</th> <td>{notes}</td></tr>
+          <tr><th class="right">SQL</th> <td><code>{sql}</code></td></tr>
+          <tr><th class="right">Count</th> <td>{count}</td></tr>
+          </tr>
+          {#more}
+          <tr><th class="right">{key}</th> <td>{value}</td></tr>
+          {/more}
+          {/info}
+        </tbody>
+      </table>
+      {:else}
+      <small><i>No description</i></small>
+      {/info}
+      <div style="padding: 8px;">
+        {?formats}
+        <h4 class="noblock">Other formats</h4>
+        {#formats}
+        &nbsp; <a href="../{cmg_id}.{.}">{.}</a>
+        {/formats}
+        {:else}
+        {/formats}
+      </div>
+    </div>
+    {#items}
+    <div class="molbox">
+      <table>
+        <tbody>
+          <tr>
+            <td colspan=3 width="{size}px" height="{size}px">{image|s}</td>
+          </tr>
+          <tr>
+            <td class="center"><b>DTXSID</b></td>
+            <td class="center"><b>CID</b></td>
+            <td class="center"><b>CASRN</b></td>
+          </tr>
+          <tr>
+            <td class="center"><a target="_blank"  href="https://comptox.epa.gov/dashboard/dsstoxdb/results?utf8=✓&search={dtxsid}">{dtxsid}</a></td>
+            <td class="center"><a target="_blank" href="https://pubchem.ncbi.nlm.nih.gov/compound/{cid}">{cid}</a></td>
+            <td class="center"><a target="_blank" href="http://www.chem.sis.nlm.nih.gov/chemidplus/rn/{casrn}">{casrn}</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    {/items}
+  </body>
+</html>

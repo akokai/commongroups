@@ -1,0 +1,54 @@
+[
+  {
+    "info": {
+      "notes": "This is a test group designed to produce few results."
+    },
+    "params": {
+      "cmg_id": "x000001",
+      "code": ":m @> :s",
+      "method": "SQL",
+      "name": "Dibenzodioxins, 1,2-dichloro derivatives",
+      "structure": "C1=C(Cl)C(Cl)=C2C(=C1)OC3=CC=CC=C3O2",
+      "structure_type": "SMILES"
+    }
+  },
+  {
+    "info": {
+      "notes": "This is a test group designed to produce few results."
+    },
+    "params": {
+      "cmg_id": "x000002",
+      "code": ":m @> :s ::qmol",
+      "method": "SQL",
+      "name": "m-Halophenyl phosphorus compounds",
+      "structure": "[cH]1c([F,Cl,Br,I])[cH][cH][cH]c1-[P]",
+      "structure_type": "SMARTS"
+    }
+  },
+  {
+    "info": {
+      "notes": "This is a test."
+    },
+    "params": {
+      "cmg_id": "x000003",
+      "code": ":m @> :s ::qmol",
+      "method": "SQL",
+      "name": "Phthalates",
+      "structure": "COC(=O)c1[cH][cH][cH][cH]c1C(=O)OC",
+      "structure_type": "SMARTS"
+    }
+  },
+  {
+    "info": {
+      "notes": "This is a test."
+    },
+    "params": {
+      "cmg_id": "x000004",
+      "code": "(:m @> :s ::qmol) AND NOT (:m @> '[C,c]~[C,c]' ::qmol) AND NOT (:m @> '[C!H0,c!H0]' ::qmol)",
+      "method": "SQL",
+      "name": "Gold compounds, inorganic",
+      "structure": "[Au]",
+      "structure_type": "SMARTS"
+    }
+  }
+]
