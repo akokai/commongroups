@@ -1,6 +1,6 @@
 # coding: utf-8
 
-__version__ = '2017.4.1'
+__version__ = '2017.4.2'
 __author__ = 'Akos Kokai, Michel Dedeo, and Fred Cauthen'
 __contact__ = 'akokai@berkeley.edu'
 __url__ = 'https://github.com/akokai/commongroups'
