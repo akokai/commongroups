@@ -5,7 +5,7 @@
 # Options:
 #   name:     Name of conda environment to use
 #   datadir:  Path to PostgreSQL data directory
-#   -f:       Install full dependencies for development environment
+#   -f:       Install full development environment
 #   -s:       Skip PostgreSQL setup
 # Based on install guide: http://www.rdkit.org/docs/Install.html
 
@@ -56,22 +56,18 @@ else
   exit 1
 fi
 
-# Install software using conda
-##############################
+# Install software
+##################
 # Packages available in anaconda/rdkit channel: https://anaconda.org/rdkit/repo
 
-# Install minimal environment
-conda create -c rdkit -n $name rdkit-postgresql cairocffi cairo
-conda install -n $name pandas pillow psycopg2 pytest requests sqlalchemy xlrd xlsxwriter
-# For oauth2client, pip will install dependencies (pyasn1, pyasn1-modules, rsa)
-$envsdir/$name/bin/pip install ashes boltons commongroups oauth2client
-# Prevent pip/gspread from trying to update requests (already installed)
-$envsdir/$name/bin/pip install --no-deps gspread
-
+# Install RDKit and custom packages with conda
+conda create -n $name -c rdkit rdkit-postgresql cairocffi
 # Optionally install full development environment
 if [ $fulldeps ]; then
   conda install -n $name ipython jupyter sphinx
 fi
+# Install all remaining dependencies with pip
+$envsdir/$name/bin/pip install commongroups
 
 # Set up PostgreSQL
 ###################

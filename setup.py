@@ -28,7 +28,17 @@ setup(
     ],
     keywords='science chemistry toxicology',
     packages=find_packages(),
-    install_requires=['boltons'],
+    install_requires=[
+        'ashes',
+        'boltons',
+        'gspread',
+        'oauth2client',
+        'pandas',
+        'psycopg2',
+        'sqlalchemy',
+        'xlrd',
+        'xlsxwriter'
+    ],
     setup_requires=['pytest-runner'],
     tests_require=['pytest'],
     entry_points={

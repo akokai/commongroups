@@ -1,5 +1,5 @@
 {
-  "database_url": "postgresql://user@localhost/database",
+  "database_url": "postgresql://user@localhost/cmgdata",
   "google_key_file": "/path/to/google-credentials-keyfile.json",
   "google_sheet_title": "Compound group parameters",
   "google_worksheet": "active"
