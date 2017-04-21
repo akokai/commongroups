@@ -3,7 +3,7 @@
 """
 Automatically populate compound groups using a chemical database.
 
-This module is a script that runs a collection of commongroups operations:
+Invoking this module runs a collection of commongroups operations:
 
 -  Read compound group definitions either from the web (Google Sheets) or
    from a JSON file if specified.
@@ -29,10 +29,12 @@ def create_parser():
 
     parser.add_argument('-p', '--project', help='project name')
     parser.add_argument('-e', '--env_path', help='path to commongroups home')
-    parser.add_argument('-d', '--database', help='database URL')
-    parser.add_argument('-g', '--googlesheet',
+    parser.add_argument('-d', '--database_url', help='database URL')
+    parser.add_argument('-k', '--google_key_file',
+                        help='Google credentials file')
+    parser.add_argument('-g', '--google_sheet_title',
                         help='title of group definitions Google Sheet')
-    parser.add_argument('-w', '--worksheet',
+    parser.add_argument('-w', '--google_worksheet',
                         help='worksheet containing group definitions')
     parser.add_argument('-f', '--params_file',
                         help='read group parameters from file')
@@ -75,10 +77,14 @@ def main():
 
     set_console_loglevel(args.level)
 
-    opts = {'database_url': args.database,
-            'google_sheet_title': args.googlesheet,
-            'google_worksheet': args.worksheet}
-    opts = {k: v for k, v in opts.items() if v is not None}
+    opt_keys = [
+        'database_url',
+        'google_key_file',
+        'google_sheet_title',
+        'google_worksheet'
+    ]
+    _args = vars(args)
+    opts = {k: _args[k] for k in opt_keys if _args[k] is not None}
 
     env = CommonEnv(name=args.project,
                     env_path=args.env_path,
