@@ -31,8 +31,7 @@ class QueryMethod(object):
     Create, describe, and execute a query for populating a compound group.
 
     Parameters:
-        params (dict): Compound group parameters from a
-            :class:`commongroups.cmgroup.CMGroup` object.
+        params (dict): Compound group parameters of a :class:`CMGroup` object.
     """
     def __init__(self, params):
         self.params = params

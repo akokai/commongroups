@@ -37,8 +37,8 @@ class CommonEnv(object):
     Run environment for :mod:`commongroups`.
 
     This object keeps track of a project environment (i.e., file locations
-    for data and logs, common parameters) for many instances of
-    :class:`commongroups.cmgroup.CMGroup`.
+    for data and logs, shared parameters), which can be used by instances of
+    :class:`CMGroup` or by a number of functions needing such information.
 
     Instantiating this class creates a directory tree: the project directory
     corresponding to ``project_path`` and subdirectories ``data``, ``log``, and

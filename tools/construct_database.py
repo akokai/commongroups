@@ -1,25 +1,24 @@
 # coding: utf-8
 
 """
-Create chemical structure-searchable database for use with Common Groups.
+Create a chemical structure-searchable database for use with Common Groups.
 
 This script creates a chemical database with ~720,000 structures from the
 U.S. Environmental Protection Agency's CompTox Dashboard public dataset.
-See :ref:`datasources`.
 
 Set up the database so that it can be used for substructure searching via the
 RDKit PostgreSQL database `extension`_. Also include CASRNs and PubChem CIDs as
 much as possible.
 
 Requirements:
--   A running instance of PostgreSQL and an empty database instantiated with
-    the RDKit extension activated. Run the ``install_deps.sh`` script.
--   Downloaded copies of certain data from the US EPA CompTox Dashboard.
-    Run the ``download_epa.sh`` script.
--   Python packages and dependencies: commongroups, rdkit, sqlalchemy,
-    psycopg2, pandas.
+-   A running instance of PostgreSQL and an empty initialized database with
+    the RDKit extension activated. See Common Groups installation instructions.
+-   Downloaded copies of certain data from the US EPA `CompTox Dashboard`_.
+    Retrieve automatically with the ``download_epa.sh`` script.
+-   Python dependencies: rdkit, sqlalchemy, psycopg2, pandas.
 
 .. _extension: http://www.rdkit.org/docs/Cartridge.html
+.. _CompTox Dashboard: https://comptox.epa.gov/dashboard/downloads
 """
 
 import argparse

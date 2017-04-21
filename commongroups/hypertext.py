@@ -81,7 +81,7 @@ def cmg_to_html(cmg, formats=None, img_source='PubChem', img_size=500):
     Generate an HTML document showing results of processing a ``CMGroup``.
 
     Parameters:
-        cmg: A :class:`commongroups.cmgroup.CMGroup`.
+        cmg: A :class:`CMGroup` object.
         formats (list): Other formats to link to for this compound group, such
             as: ``json``, ``excel``, ``csv``.
         img_source (str): How to generate images. Currently the only option
@@ -122,8 +122,8 @@ def directory(cmgs, env, title=DIR_TITLE, formats=None):
     Writes and HTML file in the environment's ``results/html`` directory.
 
     Parameters:
-        cmgs: Iterable of :class:`commongroups.cmgroup.CMGroup` objects.
-        env: :class:`commongroups.env.CommonEnv` to contain output.
+        cmgs: Iterable of :class:`CMGroup` objects.
+        env: :class:`CommonEnv` to contain output.
         title (str): Title of page.
         formats (list): List of file extensions to use to create links to other
             formats of this collection, e.g. ``json``, ``xlsx``.

@@ -59,7 +59,7 @@ class SheetManager(object):
         Open the spreadsheet containing CMG parameters.
 
         Returns:
-            :mod:`gspread.Spreadsheet`: The Google Sheet object.
+            :class:`gspread.Spreadsheet`: The Google Sheet object.
         """
         if not self.spreadsheet:
             logger.debug('Opening Google Sheet by title: %s', self.title)
@@ -99,8 +99,7 @@ class SheetManager(object):
                 that the returned objects will use to store data, etc.
 
         Yields:
-            :class:`commongroups.cmgroups.CMGroup` objects based on parameters
-            in each row.
+            :class:`CMGroup` objects based on parameters in each row.
         """
         logger.debug('Generating CMGs from worksheet: %s', self.worksheet)
 

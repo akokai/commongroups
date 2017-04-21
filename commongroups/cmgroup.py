@@ -1,6 +1,6 @@
 # coding: utf-8
 
-"""Compound group class definition."""
+"""Compound group class."""
 
 from os.path import join as pjoin
 import logging
@@ -36,13 +36,12 @@ class CMGroup(object):
     own annotations using :func:`add_info`.
 
     Data, output, and logs for each :class:`CMGroup` are managed using an
-    associated :class:`commongroups.env.CommonEnv` project environment. See
-    :doc:`Design <design>`.
+    associated :class:`CommonEnv` project environment. See :doc:`design`.
 
     Parameters:
         env (:class:`commongroups.env.CommonEnv`): The project environment.
         params (dict): A dictionary containing the parameters of the compound
-            group. See :ref:`Parameters <params>`.
+            group. See :ref:`parameters`.
         info (dict): Optional extra information as key-value pairs.
     """
     def __init__(self, env, params, info=None):
