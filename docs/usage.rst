@@ -41,10 +41,10 @@ results, etc.
 
          commongroups -e /path/to/commongroups_home [options...]
 
-   -  Set an an environment variable ``CMG_HOME``, for example, by adding this
-      line to your shell configuration::
+   -  Set an environment variable ``CMG_HOME``, for example, by adding this
+      line to your shell initialization file::
 
-         $ export CMG_HOME=/path/to/commongroups_home
+         export CMG_HOME=/path/to/commongroups_home
 
    -  If you don't specify anything, the defaults location is
       ``<user home>/commongroups_data``.

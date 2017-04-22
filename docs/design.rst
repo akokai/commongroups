@@ -36,7 +36,7 @@ Methods for associating compounds with groups
 
 Computational tools already exist for analyzing and searching molecular
 structures. Given a broad enough *set of relevant molecular structures*, and a
-set of *:ref:`defined <definitions>` structural patterns* corresponding to
+set of :ref:`defined <definitions>` *structural patterns* corresponding to
 compound groups of interest, it should be possible to apply existing
 computational methods to identify which compounds belong to which group(s). That
 is the goal of Common Groups.

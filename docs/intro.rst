@@ -19,12 +19,13 @@ screening methods`_ and regulatory agencies reference several hundred such
 groups. However, determining the actual set of substances that might belong to
 each group is usually left up to someone else.
 
-The Common Groups project aims to address this gap between identifying *groups*
-and identifying *chemical compounds* though (1) the development of a software
-tool and (2) the collaborative development of molecular structure-based
-"definitions" for chemical groups of interest.
+The Common Groups project aims to address this gap though the collaborative
+development of molecular structure-based "definitions" for chemical groups of
+interest, supported by software tools and shared information resources. The
+collaborative effort will be convened and documented by the `Chemical Hazard
+Data Commons`_.
 
-The goal of the ``commongroups`` software tool is to apply basic cheminformatics
+The goal of the Common Groups software tool is to apply basic cheminformatics
 techniques to:
 
 -  Find all substances within a larger set that belong to a given group.
@@ -61,3 +62,4 @@ hazards, based on existing knowledge.
 
 .. _hazard screening methods:
    https://www.greenscreenchemicals.org/learn/greenscreen-list-translator
+.. _Chemical Hazard Data Commons: https://commons.healthymaterials.net/

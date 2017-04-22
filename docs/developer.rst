@@ -1,6 +1,10 @@
 Developer reference
 ===================
 
+This document is organized by module. For source code, see the `repository`_.
+
+.. _repository: https://github.com/akokai/commongroups
+
 ``env`` - Environment
 ---------------------
 
@@ -52,8 +56,8 @@ See :doc:`usage`.
    :members:
    :show-inheritance:
 
-Tests
------
+``tests`` - Tests
+-----------------
 
 This package includes a suite of unit tests. Currently, the included tests only
 cover the architecture of the program itself, and not the logic of SQL queries
