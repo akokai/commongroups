@@ -1,9 +1,10 @@
 Database
 ========
 
-For ``commongroups`` to work, it needs a database of compounds searchable
-by chemical structure. We do not distribute a pre-built database, and there are
-no requirements for or limits on what compounds and data sources might be
+For ``commongroups`` to work, it needs a database of compounds searchable by
+chemical structure. Specifically, this must be a `PostgreSQL`_ database with
+the `RDKit extension`_. We do not distribute a pre-built database, and there
+are no requirements for or limits on what compounds and data sources might be
 included in the database.
 
 We develop and test ``commongroups`` using a database compiled from public data
@@ -82,4 +83,6 @@ each substance.
 The database produced by our automatic installation script satisfies these
 requirements.
 
+.. _PostgreSQL: https://www.postgresql.org/
+.. _RDKit extension: http://rdkit.org/docs/Cartridge.html
 .. _US EPA CompTox Dashboard: https://comptox.epa.gov/dashboard/downloads
