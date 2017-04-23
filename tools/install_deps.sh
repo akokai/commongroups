@@ -122,7 +122,18 @@ echo "To start the PostgreSQL database server, run"
 echo "  $envsdir/$name/bin/pg_ctl -D $datadir start"
 echo "To shut down the server, run:"
 echo "  $envsdir/$name/bin/pg_ctl -D $datadir stop"
-echo "You may want to edit $datadir/postgresql.conf to institute these settings:"
-echo "  shared_buffers = 2048MB"
-echo "  work_mem = 128MB"
+echo
+echo "Finally, adding some settings to $datadir/postgresql.conf"
+echo "to improve performance..."
+mv $datadir/postgresql.conf $datadir/postgresql.conf.bak
+cat << EOF > $datadir/postgresql.conf
+# Settings added by commongroups install script:
+synchronous_commit = off
+full_page_writes = off
+shared_buffers = 2048MB
+work_mem = 128MB
+
+EOF
+cat $datadir/postgresql.conf.bak >> $datadir/postgresql.conf
+echo Done.
 exit 0
