@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Database &#8212; Common Groups 2017.4.4 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2017.4.4',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Installation" href="install.html" />
+    <link rel="prev" title="Design" href="design.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Common Groups</a></h1>
+
+
+
+<p class="blurb">Molecular structure-based classification of chemicals</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design.html">Design</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Database</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#data-sources">Data sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#constructing-the-database">Constructing the database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#known-limitations">Known limitations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="credits.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer.html">Developer reference</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="design.html" title="previous chapter">Design</a></li>
+      <li>Next: <a href="install.html" title="next chapter">Installation</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="database">
+<h1>Database<a class="headerlink" href="#database" title="Permalink to this headline">¶</a></h1>
+<p>For <code class="docutils literal"><span class="pre">commongroups</span></code> to work, it needs a database of compounds searchable by
+chemical structure. Specifically, this must be a <a class="reference external" href="https://www.postgresql.org/">PostgreSQL</a> database with
+the <a class="reference external" href="http://rdkit.org/docs/Cartridge.html">RDKit extension</a>. We do not distribute a pre-built database, and there
+are no requirements for or limits on what compounds and data sources might be
+included in the database.</p>
+<p>We develop and test <code class="docutils literal"><span class="pre">commongroups</span></code> using a database compiled from public data
+available in the <a class="reference external" href="https://comptox.epa.gov/dashboard/downloads">US EPA CompTox Dashboard</a>, containing approximately 700,000
+structures. We believe that this is a good starting point for our immediate
+goals. We distribute a program that can <a class="reference internal" href="install.html#autodb"><span class="std std-ref">automatically</span></a> download
+data and recreate the particular database that we use.</p>
+<p>What follows is a general description of how a database can be created and
+prepared for use with <code class="docutils literal"><span class="pre">commongroups</span></code>.</p>
+<div class="section" id="data-sources">
+<span id="datasources"></span><h2>Data sources<a class="headerlink" href="#data-sources" title="Permalink to this headline">¶</a></h2>
+<p>From the <a class="reference external" href="https://comptox.epa.gov/dashboard/downloads">US EPA CompTox Dashboard</a>:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">dsstox_20160701.tsv</span></code>
+-  Downloaded as <code class="docutils literal"><span class="pre">DSSTox_Mapping_20160701.zip</span></code><ul>
+<li>Date: 2016-07-01 (file generated); 2016-12-14 (posted on EPA website)</li>
+<li>Accessed: 2017-04-18</li>
+<li>Contains mappings between the DSSTox substance identifier (DTXSID)
+and the associated InChI/InChIKey.</li>
+</ul>
+</li>
+<li><code class="docutils literal"><span class="pre">Dsstox_CAS_number_name.xlsx</span></code><ul>
+<li>Date: 2016-11-14</li>
+<li>Accessed: 2017-04-18</li>
+<li>Contains the CASRN, DTXSID, and the &#8220;preferred name&#8221; used by US EPA.</li>
+</ul>
+</li>
+<li><code class="docutils literal"><span class="pre">PubChem_DTXSID_mapping_file.txt</span></code><ul>
+<li>Date: 2016-11-14</li>
+<li>Accessed: 2017-04-18</li>
+<li>Contains the PubChem SID, PubChem CID and DTXSID.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="constructing-the-database">
+<h2>Constructing the database<a class="headerlink" href="#constructing-the-database" title="Permalink to this headline">¶</a></h2>
+<p>These are the general steps to create the database using the data sources
+above:</p>
+<ol class="arabic simple">
+<li>Create a database table of DTXSIDs, InChI(Key)s, and RDKit <code class="docutils literal"><span class="pre">mol</span></code>-type
+representations of the structures (based on InChI)</li>
+<li>Create database tables with DTXSID-CASRN and DTXSID-CID correspondences.</li>
+<li>Merge the above tables on DTXSID, creating either a new table or a
+materialized view. Create an index on molecular structures using the
+GiST-powered RDKit extension.</li>
+</ol>
+<p><strong>To execute these steps automatically</strong> on your system, first <a class="reference internal" href="install.html"><span class="doc">install</span></a> the required software and then see <a class="reference internal" href="install.html#autodb"><span class="std std-ref">Automated database instantiation</span></a>. For more technical
+detail and the exact database commands used, please see the source code in
+<code class="docutils literal"><span class="pre">tools/construct_database.py</span></code>.</p>
+</div>
+<div class="section" id="known-limitations">
+<h2>Known limitations<a class="headerlink" href="#known-limitations" title="Permalink to this headline">¶</a></h2>
+<p>Currently, for <code class="docutils literal"><span class="pre">commongroups</span></code> to be able to use a database, it must contain a
+table or view called <code class="docutils literal"><span class="pre">compounds</span></code>, which in turn must contain a column called
+<code class="docutils literal"><span class="pre">molecule</span></code>, containing molecular structures in the RDKit <code class="docutils literal"><span class="pre">mol</span></code> data type.
+Furthermore, for HTML display of compound groups, the program currently assumes
+that <code class="docutils literal"><span class="pre">compounds</span></code> contains the following columns: <code class="docutils literal"><span class="pre">cid</span></code> (PubChem CID, also
+used for images), <code class="docutils literal"><span class="pre">casrn</span></code>, and <code class="docutils literal"><span class="pre">dtxsid</span></code>. This may change in future versions.</p>
+<p>The database produced by our automatic installation script satisfies these
+requirements.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2016, Akos Kokai, Michel Dedeo, and Fred Cauthen.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/database.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

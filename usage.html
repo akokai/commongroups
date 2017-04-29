@@ -1,0 +1,238 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Usage &#8212; Common Groups 2017.4.4 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2017.4.4',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Credits" href="credits.html" />
+    <link rel="prev" title="Installation" href="install.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Common Groups</a></h1>
+
+
+
+<p class="blurb">Molecular structure-based classification of chemicals</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design.html">Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#running-commongroups">Running <code class="docutils literal"><span class="pre">commongroups</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#environments">Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuration">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#google-sheets-access">Google Sheets access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reading-parameters-from-a-file">Reading parameters from a file</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="credits.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer.html">Developer reference</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="install.html" title="previous chapter">Installation</a></li>
+      <li>Next: <a href="credits.html" title="next chapter">Credits</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="usage">
+<h1>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="running-commongroups">
+<span id="running"></span><h2>Running <code class="docutils literal"><span class="pre">commongroups</span></code><a class="headerlink" href="#running-commongroups" title="Permalink to this headline">¶</a></h2>
+<p>Once the package is installed, the program can be run from the command line
+using:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">commongroups</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Use the option <code class="docutils literal"><span class="pre">--help</span></code> to get a list of all the available options.</p>
+<p>If the program runs successfully, it will output numerous files in the
+<code class="docutils literal"><span class="pre">results</span></code> subdirectory of whatever project environment you are using. The best
+way to view results is to open the <code class="docutils literal"><span class="pre">results/html/index.html</span></code> file in your
+browser. This will contain links to all the results in your project.</p>
+<p>Read further for an explanation of projects, environments, and configuration
+options.</p>
+</div>
+<div class="section" id="environments">
+<span id="id1"></span><h2>Environments<a class="headerlink" href="#environments" title="Permalink to this headline">¶</a></h2>
+<p>The program is designed to keep all of its data and files within a particular
+directory on your system &#8211; the &#8220;home&#8221; environment. Within that, it organizes
+files into &#8220;project&#8221; environments. You can maintain multiple different projects
+in which you use <code class="docutils literal"><span class="pre">commongroups</span></code> to work on separate collections of data,
+results, etc.</p>
+<ul>
+<li><p class="first">The <em>home environment</em> contains all project directories, and can contain a
+global <a class="reference internal" href="#config"><span class="std std-ref">configuration</span></a> file.</p>
+</li>
+<li><p class="first">You can specify the location of the home environment in a number of ways:</p>
+<ul>
+<li><p class="first">When running the commongroups script, use the <code class="docutils literal"><span class="pre">-e</span></code> option:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">commongroups</span> <span class="o">-</span><span class="n">e</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">commongroups_home</span> <span class="p">[</span><span class="n">options</span><span class="o">...</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Set an environment variable <code class="docutils literal"><span class="pre">CMG_HOME</span></code>, for example, by adding this
+line to your shell initialization file:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">CMG_HOME</span><span class="o">=/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">commongroups_home</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">If you don&#8217;t specify anything, the defaults location is
+<code class="docutils literal"><span class="pre">&lt;user</span> <span class="pre">home&gt;/commongroups_data</span></code>.</p>
+</li>
+</ul>
+</li>
+<li><p class="first"><em>Project environments</em> are subdirectories of the home environment.
+The name of each project is the name of the directory
+where its data are stored. You can have any number of projects.</p>
+<ul>
+<li><p class="first">Projects directories will be automatically created, and will
+contain <code class="docutils literal"><span class="pre">data</span></code>, <code class="docutils literal"><span class="pre">log</span></code>, and <code class="docutils literal"><span class="pre">results</span></code> subdirectories.</p>
+</li>
+<li><p class="first">You can specify a project when you run Common Groups, using the <code class="docutils literal"><span class="pre">-p</span></code>
+option:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">commongroups</span> <span class="o">-</span><span class="n">p</span> <span class="o">&lt;</span><span class="n">project_name</span><span class="o">&gt;</span> <span class="p">[</span><span class="n">options</span><span class="o">...</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">If you don&#8217;t specify a project, your data will go in
+<code class="docutils literal"><span class="pre">&lt;commongroups</span> <span class="pre">home&gt;/default</span></code>.</p>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="configuration">
+<span id="config"></span><h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<p>Rather than <em>always</em> having to give many command-line options, such as your
+system&#8217;s database URL and the location of your Google key file, it&#8217;s easier to
+<strong>create a configuration file</strong> to store all this information. If the home
+environment contains a file called <code class="docutils literal"><span class="pre">config.json</span></code>, then this file will be read
+every time Common Groups is run.</p>
+<p>The format of the configuration file must be valid JSON. The example code below
+is included in <code class="docutils literal"><span class="pre">tools</span></code> directory of the repository. You can specify any of the
+following options:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;database_url&quot;</span><span class="p">:</span> <span class="s2">&quot;postgresql://user@localhost/cmgdata&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;google_key_file&quot;</span><span class="p">:</span> <span class="s2">&quot;/path/to/google-credentials-keyfile.json&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;google_sheet_title&quot;</span><span class="p">:</span> <span class="s2">&quot;Compound group parameters&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;google_worksheet&quot;</span><span class="p">:</span> <span class="s2">&quot;active&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="google-sheets-access">
+<span id="googlesetup"></span><h2>Google Sheets access<a class="headerlink" href="#google-sheets-access" title="Permalink to this headline">¶</a></h2>
+<p>If you want to access a Google Sheet that contains compound group parameters,
+you must have Google Service Account credentials. Steps to obtain this:</p>
+<ul class="simple">
+<li>Create <a class="reference external" href="https://console.developers.google.com/projectselector/apis/credentials">Google API</a> credentials for accessing Google Drive. This requires a
+Google account. See the <a class="reference external" href="http://gspread.readthedocs.io/en/latest/oauth2.html">gspread docs</a> for more detailed instructions.</li>
+<li>Download a <strong>key file</strong> (JSON format) containing your Google service account
+credentials and save it somewhere secure.</li>
+<li>Create, or otherwise gain access to, a Google Spreadsheet in which the
+compound group parameters will be specified.</li>
+<li>Share the relevant Google Sheet with your Google service account client
+e-mail address (it&#8217;s in the key file).</li>
+</ul>
+<p>To enable <code class="docutils literal"><span class="pre">commongroups</span></code> to access your spreadsheet, specify the following
+information either as command-line options or in your configuration file:</p>
+<ul class="simple">
+<li>The path to your key file (<code class="docutils literal"><span class="pre">-k</span></code>)</li>
+<li>The title of the <em>document</em> (<code class="docutils literal"><span class="pre">-g</span></code>) and of the specific <em>worksheet</em>, e.g.,
+&#8220;Sheet1&#8221; (<code class="docutils literal"><span class="pre">-w</span></code>) that contains group parameters.</li>
+</ul>
+</div>
+<div class="section" id="reading-parameters-from-a-file">
+<h2>Reading parameters from a file<a class="headerlink" href="#reading-parameters-from-a-file" title="Permalink to this headline">¶</a></h2>
+<p>Instead of getting parameters from a Google Sheet, it&#8217;s possible to read them
+from a file. Specify the file path using the <code class="docutils literal"><span class="pre">-f</span></code> option:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">commongroups</span> <span class="o">-</span><span class="n">f</span> <span class="o">&lt;</span><span class="n">file</span><span class="o">&gt;</span> <span class="p">[</span><span class="n">options</span><span class="o">...</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Currently, the only file format supported is JSON. The <a class="reference external" href="https://github.com/akokai/commongroups/blob/master/commongroups/tests/params.json">testing parameter set</a>
+can serve as an example of the format.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2016, Akos Kokai, Michel Dedeo, and Fred Cauthen.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/usage.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

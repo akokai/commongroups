@@ -1,0 +1,177 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Common Groups &#8212; Common Groups 2017.4.4 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2017.4.4',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Introduction" href="intro.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="#">Common Groups</a></h1>
+
+
+
+<p class="blurb">Molecular structure-based classification of chemicals</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design.html">Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="credits.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer.html">Developer reference</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+      <li>Next: <a href="intro.html" title="next chapter">Introduction</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="common-groups">
+<h1>Common Groups<a class="headerlink" href="#common-groups" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://github.com/akokai/commongroups"><img alt="GitHub" src="https://img.shields.io/github/release/akokai/commongroups.svg" /></a> <a class="reference external" href="https://pypi.python.org/pypi/commongroups/"><img alt="PyPI" src="https://img.shields.io/pypi/v/commongroups.svg" /></a> <a class="reference external" href="http://calver.org/"><img alt="calver YYYY.MM.MICRO" src="https://img.shields.io/badge/calver-YYYY.MM.MICRO-22bfda.svg" /></a></p>
+<p><em>Molecular structure-based classification of chemicals in known hazard groups.</em></p>
+<div class="section" id="contents">
+<h2>Contents<a class="headerlink" href="#contents" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#purpose">Purpose</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#frequently-asked-questions">Frequently asked questions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="design.html">Design</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="design.html#general-concepts">General concepts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="design.html#methods-for-associating-compounds-with-groups">Methods for associating compounds with groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="design.html#design-of-this-program">Design of this program</a></li>
+<li class="toctree-l2"><a class="reference internal" href="design.html#defining-groups">Defining groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="design.html#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">Database</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="database.html#data-sources">Data sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="database.html#constructing-the-database">Constructing the database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="database.html#known-limitations">Known limitations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="install.html#step-by-step">Step by step</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#automated-database-instantiation">Automated database instantiation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#next-steps">Next steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#running-commongroups">Running <code class="docutils literal"><span class="pre">commongroups</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#environments">Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#configuration">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#google-sheets-access">Google Sheets access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#reading-parameters-from-a-file">Reading parameters from a file</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="credits.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer.html">Developer reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="developer.html#module-commongroups.env"><code class="docutils literal"><span class="pre">env</span></code> - Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer.html#module-commongroups.cmgroup"><code class="docutils literal"><span class="pre">cmgroup</span></code> - Compound group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer.html#module-commongroups.query"><code class="docutils literal"><span class="pre">query</span></code> - Database queries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer.html#module-commongroups.googlesheet"><code class="docutils literal"><span class="pre">googlesheet</span></code> - Google Sheets access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer.html#module-commongroups.hypertext"><code class="docutils literal"><span class="pre">hypertext</span></code> - Generating HTML output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer.html#module-commongroups.ops"><code class="docutils literal"><span class="pre">ops</span></code> - Batch operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer.html#run-the-run-script"><code class="docutils literal"><span class="pre">run</span></code> - The run script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer.html#module-commongroups.errors"><code class="docutils literal"><span class="pre">errors</span></code> - Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer.html#tests-tests"><code class="docutils literal"><span class="pre">tests</span></code> - Tests</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h2>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2016, Akos Kokai, Michel Dedeo, and Fred Cauthen.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

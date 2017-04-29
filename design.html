@@ -1,0 +1,323 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Design &#8212; Common Groups 2017.4.4 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2017.4.4',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Database" href="database.html" />
+    <link rel="prev" title="Introduction" href="intro.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Common Groups</a></h1>
+
+
+
+<p class="blurb">Molecular structure-based classification of chemicals</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Design</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#general-concepts">General concepts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#methods-for-associating-compounds-with-groups">Methods for associating compounds with groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#design-of-this-program">Design of this program</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#defining-groups">Defining groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="credits.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer.html">Developer reference</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="intro.html" title="previous chapter">Introduction</a></li>
+      <li>Next: <a href="database.html" title="next chapter">Database</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="design">
+<h1>Design<a class="headerlink" href="#design" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="general-concepts">
+<h2>General concepts<a class="headerlink" href="#general-concepts" title="Permalink to this headline">¶</a></h2>
+<p>We understand <strong>compound groups</strong> to be sets of substances defined by their
+shared molecular features, and which are useful to consider as a group because
+they share other properties of interest.</p>
+<p>The premise for grouping chemicals together is that many substances share
+substantial similarities in toxicological characteristics. The notion that
+these similarities are related to underlying similarities in molecular
+structure is supported by toxicological research (Kazius et al., 2005; Singh et
+al., 2016). Environmental fate and exposure potential are also known to be
+related to molecular structure, making compound groups an important unit of
+analysis in chemical hazard assessment and in the environmental health sciences
+more broadly (Krowech et al., 2016).</p>
+<p>Compounds groups of toxicological interest can be identified by a number of
+research strategies, including computational and predictive toxicology
+approaches (Faulkner et al., 2017).</p>
+<p>Our focus, however, is on enumerating compounds that belong to groups <em>already
+identified</em> through established methods. Over several decades of toxicological,
+epidemiological, and regulatory science worldwide, several hundred compound
+groups have been recognized and associated with known health hazards. For
+example, <a class="reference external" href="http://monographs.iarc.fr/">IARC</a> classifies &#8220;Nickel compounds&#8221; and
+several other compound groups according to their carcinogenicity.</p>
+<p>See below for <a class="reference internal" href="#toxrefs"><span class="std std-ref">references</span></a>.</p>
+</div>
+<div class="section" id="methods-for-associating-compounds-with-groups">
+<h2>Methods for associating compounds with groups<a class="headerlink" href="#methods-for-associating-compounds-with-groups" title="Permalink to this headline">¶</a></h2>
+<p>Computational tools already exist for analyzing and searching molecular
+structures. Given a broad enough <em>set of relevant molecular structures</em>, and a
+set of <a class="reference internal" href="#definitions"><span class="std std-ref">defined</span></a> <em>structural patterns</em> corresponding to
+compound groups of interest, it should be possible to apply existing
+computational methods to identify which compounds belong to which group(s). That
+is the goal of Common Groups.</p>
+<p>Thus, we sometimes describe our project as <strong>&#8220;populating&#8221; groups</strong> with relevant
+examples of substances that belong to those groups. The immediate intended
+application of this project is to give technical definitions and enable
+computationally populating the set of compound groups named throughout all the
+hazard identification sources of the <a class="reference external" href="https://www.greenscreenchemicals.org/">GreenScreen for Safer Chemicals</a> and the
+<a class="reference external" href="https://www.greenscreenchemicals.org/learn/greenscreen-list-translator">GreenScreen List Translator</a>.</p>
+</div>
+<div class="section" id="design-of-this-program">
+<h2>Design of this program<a class="headerlink" href="#design-of-this-program" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal"><span class="pre">commongroups</span></code> software automates the process of going from a compound
+group definition to a list of substances that belong to the group. The program
+reads technical definitions of compound groups from a Google Spreadsheet. In
+the spreadsheet, the users of the program must define each group using the set
+of <a class="reference internal" href="#parameters"><span class="std std-ref">parameters</span></a> described below. With these definitions, the
+program searches a database of molecular structures looking for matches to the
+patterns; hundreds of thousands of compounds can be evaluated automatically in
+this way.  Finally, the program generates lists of matching compounds, and
+reports its results in the form of a web-browseable directory of groups.</p>
+<p>To describe the &#8220;search&#8221; process in slightly more technical terms: For each
+compound group, <code class="docutils literal"><span class="pre">commongroups</span></code> formulates a database query that expresses the
+specified structural patterns and selection logic. It then runs this query
+against a local database of chemical structures, and retrieves the resulting set
+of compounds that match the group definition. Essential to this processs is the
+<a class="reference external" href="http://rdkit.org/">RDKit</a> open-source cheminformatics toolkit, which enables database querying
+using molecular structure comparisons.</p>
+<p>The actual compounds identified when a group is populated using <code class="docutils literal"><span class="pre">commongroups</span></code>
+will necessarily depend on what compounds are represented in the database that
+is used. For information about how we construct a database for this purpose, see
+<a class="reference internal" href="database.html"><span class="doc">Database</span></a>. For detailed technical documentation about how the
+program works, see <a class="reference internal" href="usage.html"><span class="doc">Usage</span></a> and the <a class="reference internal" href="developer.html"><span class="doc">Developer reference</span></a>.</p>
+</div>
+<div class="section" id="defining-groups">
+<span id="definitions"></span><h2>Defining groups<a class="headerlink" href="#defining-groups" title="Permalink to this headline">¶</a></h2>
+<p>In this project we define groups by specifying one or more patterns in molecular
+structure. We express these patterns in <a class="reference external" href="http://www.daylight.com/dayhtml/doc/theory/theory.smarts.html">SMARTS</a> notation (or, if very simple,
+sometimes in <a class="reference external" href="http://www.daylight.com/dayhtml/doc/theory/theory.smiles.html">SMILES</a> notation). For some groups, we may need to specify
+multiple patterns linked by logical conditions (&#8220;and&#8221;, &#8220;or&#8221;, &#8220;not&#8221;, etc.). Here
+are a few simple examples of molecular patterns that correpsond to compound
+groups of toxicological interest.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="46%" />
+<col width="54%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Compound group</th>
+<th class="head">Structure pattern (SMARTS)</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Mercury compounds, alkyl</td>
+<td><code class="docutils literal"><span class="pre">[Hg]C</span></code></td>
+</tr>
+<tr class="row-odd"><td>Diazonium salts</td>
+<td><code class="docutils literal"><span class="pre">[C,c][N+]#[N]</span></code></td>
+</tr>
+<tr class="row-even"><td>Methacrylates</td>
+<td><code class="docutils literal"><span class="pre">[CH3]C(=[CH2])C(=O)O-[*]</span></code></td>
+</tr>
+</tbody>
+</table>
+<p>Since SMARTS expressions are not very intuitive or easily understood, it is
+helpful to be able to visualise the meaning of a SMARTS expression. To that end,
+we recommend a useful web app called <a class="reference external" href="http://smartsview.zbh.uni-hamburg.de/smartsview/view">SMARTSviewer</a> developed at the University
+of Hamburg.</p>
+<p>We believe that the technical definitions of compound groups should be openly
+discussed and peer-reviewed to ensure their accuracy and robustness. This aspect
+of the Common Groups project will be documented and conducted elsewhere.</p>
+<div class="section" id="parameters-for-defining-a-compound-group">
+<span id="parameters"></span><h3>Parameters for defining a compound group<a class="headerlink" href="#parameters-for-defining-a-compound-group" title="Permalink to this headline">¶</a></h3>
+<p>The following parameters define a compound group. However, note that this is
+subject to change as the project and software develops.</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">cmg_id</span></code>: A unique identifier for the group.</li>
+<li><code class="docutils literal"><span class="pre">name</span></code>: The name of the group, e.g., &#8220;Phthalates&#8221;.</li>
+<li><code class="docutils literal"><span class="pre">method</span></code>: The search method for identifying compounds in the group. We
+anticipate possibly having a range of computational methods available, but
+in the current (early) version of this software, the only option is <code class="docutils literal"><span class="pre">SQL</span></code>.</li>
+<li><code class="docutils literal"><span class="pre">structure_type</span></code>: How the structure is notated, i.e., SMILES or SMARTS.</li>
+<li><code class="docutils literal"><span class="pre">structure</span></code>: The structure or pattern used as input to the search method.</li>
+<li><code class="docutils literal"><span class="pre">code</span></code>: The criteria for how compounds should be evaluated to determine
+whether or not they match the structural pattern. For the time being, these
+definitions must be written in <a class="reference external" href="https://en.wikipedia.org/wiki/SQL">SQL</a>, a programming language used in
+database operations.<ul>
+<li>Specifically, this parameter corresponds to the <code class="docutils literal"><span class="pre">where</span></code> clause of a SQL
+<code class="docutils literal"><span class="pre">select</span></code> statement.</li>
+<li>The substrings <code class="docutils literal"><span class="pre">:m</span></code> and <code class="docutils literal"><span class="pre">:s</span></code> will be substituted with the name of the
+database column containing molecular structures, and the value of the
+<code class="docutils literal"><span class="pre">structure</span></code> parameter, respectively.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="examples">
+<h3>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
+<p>Here is an example of some group parameters in tabular form, as they would
+appear in a spreadsheet:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="7%" />
+<col width="30%" />
+<col width="11%" />
+<col width="17%" />
+<col width="11%" />
+<col width="23%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">cmg_id</th>
+<th class="head">name</th>
+<th class="head">method</th>
+<th class="head">structure_type</th>
+<th class="head">structure</th>
+<th class="head">code</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1001</td>
+<td>Lead compouds</td>
+<td>SQL</td>
+<td>SMILES</td>
+<td><code class="docutils literal"><span class="pre">[Pb]</span></code></td>
+<td><code class="docutils literal"><span class="pre">:m</span> <span class="pre">&#64;&gt;</span> <span class="pre">:s</span></code></td>
+</tr>
+<tr class="row-odd"><td>2002</td>
+<td>Mercury compounds, alkyl</td>
+<td>SQL</td>
+<td>SMARTS</td>
+<td><code class="docutils literal"><span class="pre">[Hg]C</span></code></td>
+<td><code class="docutils literal"><span class="pre">:m</span> <span class="pre">&#64;&gt;</span> <span class="pre">:s</span> <span class="pre">::qmol</span></code></td>
+</tr>
+</tbody>
+</table>
+<p>In this example, note that lead compounds are defined with a very simple SMILES
+string, which just specifies the element lead. The query code expresses a
+substructure search: any molecule containing the lead atom as a substructure is
+matched. In contrast, alkyl mercury compoounds requires a slightly more nuanced
+definition, and we use SMARTS to specify the pattern of a mercury atom bound to
+a <em>non-aromatic</em> carbon. We also include the <code class="docutils literal"><span class="pre">::qmol</span></code> term in the query code
+to indicate that the structure is a query molecule.</p>
+<p>In addition to these technical parameters, compound groups can be further
+described by adding notes or plain-language descriptions. This information is
+not used for computational purposes, but can be included for interpretation and
+communication of results. In the <code class="docutils literal"><span class="pre">commongroups</span></code> spreadsheet format, any
+columns <em>after</em> the parameters are read in as additional information.</p>
+<p>In the next section, we describe the form of database that is necessary to
+perform compound group population using these kinds of definitions.</p>
+</div>
+</div>
+<div class="section" id="references">
+<span id="toxrefs"></span><h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Kazius, J., McGuire, R., &amp; Bursi, R. (2005). Derivation and validation of
+toxicophores for mutagenicity prediction. <em>Journal of Medicinal Chemistry</em>,
+48(1), 312–320. <a class="reference external" href="https://doi.org/10.1021/jm040835a">https://doi.org/10.1021/jm040835a</a></li>
+<li>Singh, P. K., Negi, A., Gupta, P. K., Chauhan, M., &amp; Kumar, R. (2016).
+Toxicophore exploration as a screening technology for drug design and
+discovery: Techniques, scope and limitations. <em>Archives of Toxicology</em>,
+90(8), 1785–1802. <a class="reference external" href="https://doi.org/10.1007/s00204-015-1587-5">https://doi.org/10.1007/s00204-015-1587-5</a></li>
+<li>Krowech, G., Hoover, S., Plummer, L., Sandy, M., Zeise, L., &amp; Solomon, G.
+(2016). Identifying chemical groups for biomonitoring. <em>Environmental Health
+Perspectives,</em> 124(12), A219–A226. <a class="reference external" href="https://doi.org/10.1289/EHP537">https://doi.org/10.1289/EHP537</a></li>
+<li>Faulkner, D., Rubin Shen, L. K., et al. (2017). Tools for green molecular
+design to reduce toxicological risk. In R. J. Richardson &amp; D. E. Johnson
+(Eds.), <em>Computational systems pharmacology and toxicology</em> (pp. 36–59).
+Cambridge: Royal Society of Chemistry.
+<a class="reference external" href="https://doi.org/10.1039/9781782623731-00036">https://doi.org/10.1039/9781782623731-00036</a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2016, Akos Kokai, Michel Dedeo, and Fred Cauthen.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/design.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

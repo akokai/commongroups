@@ -1,0 +1,752 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Developer reference &#8212; Common Groups 2017.4.4 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2017.4.4',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Credits" href="credits.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Common Groups</a></h1>
+
+
+
+<p class="blurb">Molecular structure-based classification of chemicals</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design.html">Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="credits.html">Credits</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Developer reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-commongroups.env"><code class="docutils literal"><span class="pre">env</span></code> - Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-commongroups.cmgroup"><code class="docutils literal"><span class="pre">cmgroup</span></code> - Compound group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-commongroups.query"><code class="docutils literal"><span class="pre">query</span></code> - Database queries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-commongroups.googlesheet"><code class="docutils literal"><span class="pre">googlesheet</span></code> - Google Sheets access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-commongroups.hypertext"><code class="docutils literal"><span class="pre">hypertext</span></code> - Generating HTML output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-commongroups.ops"><code class="docutils literal"><span class="pre">ops</span></code> - Batch operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#run-the-run-script"><code class="docutils literal"><span class="pre">run</span></code> - The run script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-commongroups.errors"><code class="docutils literal"><span class="pre">errors</span></code> - Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tests-tests"><code class="docutils literal"><span class="pre">tests</span></code> - Tests</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="credits.html" title="previous chapter">Credits</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="developer-reference">
+<h1>Developer reference<a class="headerlink" href="#developer-reference" title="Permalink to this headline">¶</a></h1>
+<p>This document is organized by module. For source code, see the <a class="reference external" href="https://github.com/akokai/commongroups">repository</a>.</p>
+<div class="section" id="module-commongroups.env">
+<span id="env-environment"></span><h2><code class="docutils literal"><span class="pre">env</span></code> - Environment<a class="headerlink" href="#module-commongroups.env" title="Permalink to this headline">¶</a></h2>
+<p>Environment for compound group operations.</p>
+<dl class="class">
+<dt id="commongroups.env.CommonEnv">
+<em class="property">class </em><code class="descclassname">commongroups.env.</code><code class="descname">CommonEnv</code><span class="sig-paren">(</span><em>name=None</em>, <em>env_path=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#commongroups.env.CommonEnv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Run environment for <code class="xref py py-mod docutils literal"><span class="pre">commongroups</span></code>.</p>
+<p>This object keeps track of a project environment (i.e., file locations
+for data and logs, shared parameters), which can be used by instances of
+<code class="xref py py-class docutils literal"><span class="pre">CMGroup</span></code> or by a number of functions needing such information.</p>
+<p>Instantiating this class creates a directory tree: the project directory
+corresponding to <code class="docutils literal"><span class="pre">project_path</span></code> and subdirectories <code class="docutils literal"><span class="pre">data</span></code>, <code class="docutils literal"><span class="pre">log</span></code>, and
+<code class="docutils literal"><span class="pre">results</span></code>. The project directory is created within the &#8220;home&#8221; directory
+corresponding to <code class="docutils literal"><span class="pre">env_path</span></code>.  A new log file is created in the <code class="docutils literal"><span class="pre">log</span></code>
+subdirectory each time a new <code class="docutils literal"><span class="pre">CommonEnv</span></code> with the same project name is
+created.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<em>str</em>) &#8211; Project name, used to name the project directory.</li>
+<li><strong>env_path</strong> (<em>str</em>) &#8211; Path to root commongroups home. If not specified,
+looks for environment variable <code class="docutils literal"><span class="pre">CMG_HOME</span></code> or defaults to
+<code class="docutils literal"><span class="pre">~/commongroups_data</span></code>.</li>
+<li><strong>kwargs</strong> &#8211; Configuration options to override those read from file.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="commongroups.env.CommonEnv.connect_database">
+<code class="descname">connect_database</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#commongroups.env.CommonEnv.connect_database" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instantiate a SQLAlchemy engine for connecting to the database.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="commongroups.env.CommonEnv.data_path">
+<code class="descname">data_path</code><a class="headerlink" href="#commongroups.env.CommonEnv.data_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Path to the project data directory.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="commongroups.env.CommonEnv.name">
+<code class="descname">name</code><a class="headerlink" href="#commongroups.env.CommonEnv.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Project name.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="commongroups.env.CommonEnv.project_path">
+<code class="descname">project_path</code><a class="headerlink" href="#commongroups.env.CommonEnv.project_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Path to project directory.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="commongroups.env.CommonEnv.results_path">
+<code class="descname">results_path</code><a class="headerlink" href="#commongroups.env.CommonEnv.results_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Path to the project results directory.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="commongroups.env.CommonEnv.set_config">
+<code class="descname">set_config</code><span class="sig-paren">(</span><em>opts</em><span class="sig-paren">)</span><a class="headerlink" href="#commongroups.env.CommonEnv.set_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Combine config options from file and from object instantiation.</p>
+<p>Parameters passed as <code class="docutils literal"><span class="pre">config</span></code> when the <code class="docutils literal"><span class="pre">CommonEnv</span></code> was created will
+overwrite parameters read from file (individually).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<em>dict</em>) &#8211; Configuration options.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="commongroups.env.add_project_handler">
+<code class="descclassname">commongroups.env.</code><code class="descname">add_project_handler</code><span class="sig-paren">(</span><em>log_file</em><span class="sig-paren">)</span><a class="headerlink" href="#commongroups.env.add_project_handler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a project-specific <code class="xref py py-class docutils literal"><span class="pre">FileHandler</span></code> for all logging output.</p>
+<p>This enables logging to a file that&#8217;s kept within the project
+directory.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-commongroups.cmgroup">
+<span id="cmgroup-compound-group"></span><h2><code class="docutils literal"><span class="pre">cmgroup</span></code> - Compound group<a class="headerlink" href="#module-commongroups.cmgroup" title="Permalink to this headline">¶</a></h2>
+<p>Compound group class.</p>
+<dl class="class">
+<dt id="commongroups.cmgroup.CMGroup">
+<em class="property">class </em><code class="descclassname">commongroups.cmgroup.</code><code class="descname">CMGroup</code><span class="sig-paren">(</span><em>env</em>, <em>params</em>, <em>info=None</em><span class="sig-paren">)</span><a class="headerlink" href="#commongroups.cmgroup.CMGroup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Compound group object.</p>
+<p>Initialize with parameters (<code class="docutils literal"><span class="pre">params</span></code>), which are known in advance and
+assumed to stay unchanged. Call the <a class="reference internal" href="#commongroups.cmgroup.CMGroup.create_query" title="commongroups.cmgroup.CMGroup.create_query"><code class="xref py py-func docutils literal"><span class="pre">create_query()</span></code></a> method to set up a
+database query, then call <a class="reference internal" href="#commongroups.cmgroup.CMGroup.process" title="commongroups.cmgroup.CMGroup.process"><code class="xref py py-func docutils literal"><span class="pre">process()</span></code></a> (requires a database connection)
+to populate the object&#8217;s <code class="docutils literal"><span class="pre">compounds</span></code> and <code class="docutils literal"><span class="pre">info</span></code> attributes.  Add your
+own annotations using <a class="reference internal" href="#commongroups.cmgroup.CMGroup.add_info" title="commongroups.cmgroup.CMGroup.add_info"><code class="xref py py-func docutils literal"><span class="pre">add_info()</span></code></a>.</p>
+<p>Data, output, and logs for each <a class="reference internal" href="#commongroups.cmgroup.CMGroup" title="commongroups.cmgroup.CMGroup"><code class="xref py py-class docutils literal"><span class="pre">CMGroup</span></code></a> are managed using an
+associated <code class="xref py py-class docutils literal"><span class="pre">CommonEnv</span></code> project environment. See <a class="reference internal" href="design.html"><span class="doc">Design</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>env</strong> (<a class="reference internal" href="#commongroups.env.CommonEnv" title="commongroups.env.CommonEnv"><code class="xref py py-class docutils literal"><span class="pre">commongroups.env.CommonEnv</span></code></a>) &#8211; The project environment.</li>
+<li><strong>params</strong> (<em>dict</em>) &#8211; A dictionary containing the parameters of the compound
+group. See <a class="reference internal" href="design.html#parameters"><span class="std std-ref">Parameters for defining a compound group</span></a>.</li>
+<li><strong>info</strong> (<em>dict</em>) &#8211; Optional extra information as key-value pairs.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="commongroups.cmgroup.CMGroup.add_info">
+<code class="descname">add_info</code><span class="sig-paren">(</span><em>info</em><span class="sig-paren">)</span><a class="headerlink" href="#commongroups.cmgroup.CMGroup.add_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add information to the group as key-value pairs.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> (<em>dict</em>) &#8211; A dict containing any number of items.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="commongroups.cmgroup.CMGroup.cmg_id">
+<code class="descname">cmg_id</code><a class="headerlink" href="#commongroups.cmgroup.CMGroup.cmg_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compound group ID (convenience method to retrieve from params).</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="commongroups.cmgroup.CMGroup.compounds">
+<code class="descname">compounds</code><a class="headerlink" href="#commongroups.cmgroup.CMGroup.compounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>If populated, return a <code class="docutils literal"><span class="pre">DataFrame</span></code> of compounds in the group.</p>
+<p>Warning: <code class="docutils literal"><span class="pre">DataFrame</span></code> objects are easily modified by accident. Making
+this a read-only attribute does not prevent accidental modification.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="commongroups.cmgroup.CMGroup.create_query">
+<code class="descname">create_query</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#commongroups.cmgroup.CMGroup.create_query" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create query method based on compound group parameters.</p>
+<p>Add a callable <a class="reference internal" href="#commongroups.query.QueryMethod" title="commongroups.query.QueryMethod"><code class="xref py py-class docutils literal"><span class="pre">commongroups.query.QueryMethod</span></code></a> attribute.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="commongroups.cmgroup.CMGroup.name">
+<code class="descname">name</code><a class="headerlink" href="#commongroups.cmgroup.CMGroup.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compound group name (convenience method to retrieve from params).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="commongroups.cmgroup.CMGroup.process">
+<code class="descname">process</code><span class="sig-paren">(</span><em>con</em><span class="sig-paren">)</span><a class="headerlink" href="#commongroups.cmgroup.CMGroup.process" title="Permalink to this definition">¶</a></dt>
+<dd><p>Execute the database query and store results in the <code class="docutils literal"><span class="pre">CMGroup</span></code> object.</p>
+<p>Populate the <code class="docutils literal"><span class="pre">compounds</span></code> list with query results; add a computed
+summary of results to the <code class="docutils literal"><span class="pre">info</span></code> attribute.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>con</strong> (<code class="xref py py-class docutils literal"><span class="pre">sqlalchemy.engine.Engine</span></code>) &#8211; Database connection.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="commongroups.cmgroup.CMGroup.to_dict">
+<code class="descname">to_dict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#commongroups.cmgroup.CMGroup.to_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a dict of <code class="docutils literal"><span class="pre">CMGroup</span></code> parameters and info.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="commongroups.cmgroup.CMGroup.to_excel">
+<code class="descname">to_excel</code><span class="sig-paren">(</span><em>path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#commongroups.cmgroup.CMGroup.to_excel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output compound group data to an Excel spreadsheet.</p>
+<p>Parameters and info are tabulated on the first sheet, and the full
+compounds <code class="docutils literal"><span class="pre">DataFrame</span></code> is exported to the second sheet.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="commongroups.cmgroup.CMGroup.to_html">
+<code class="descname">to_html</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#commongroups.cmgroup.CMGroup.to_html" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output HTML display of the compound group.</p>
+<p>For options see <a class="reference internal" href="#commongroups.hypertext.cmg_to_html" title="commongroups.hypertext.cmg_to_html"><code class="xref py py-func docutils literal"><span class="pre">commongroups.hypertext.cmg_to_html()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="commongroups.cmgroup.CMGroup.to_json">
+<code class="descname">to_json</code><span class="sig-paren">(</span><em>path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#commongroups.cmgroup.CMGroup.to_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Serialize <code class="docutils literal"><span class="pre">CMGroup</span></code> parameters and info as JSON.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-commongroups.query">
+<span id="query-database-queries"></span><h2><code class="docutils literal"><span class="pre">query</span></code> - Database queries<a class="headerlink" href="#module-commongroups.query" title="Permalink to this headline">¶</a></h2>
+<p>Database querying methods for compound groups.</p>
+<dl class="class">
+<dt id="commongroups.query.QueryMethod">
+<em class="property">class </em><code class="descclassname">commongroups.query.</code><code class="descname">QueryMethod</code><span class="sig-paren">(</span><em>params</em><span class="sig-paren">)</span><a class="headerlink" href="#commongroups.query.QueryMethod" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Create, describe, and execute a query for populating a compound group.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>params</strong> (<em>dict</em>) &#8211; Compound group parameters of a <code class="xref py py-class docutils literal"><span class="pre">CMGroup</span></code> object.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="commongroups.query.QueryMethod.create_expression">
+<code class="descname">create_expression</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#commongroups.query.QueryMethod.create_expression" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compose a SQLAlchemy expression based on the supplied parameters.</p>
+<p>Set object attribute <code class="docutils literal"><span class="pre">expression</span></code>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="commongroups.query.QueryMethod.create_query_where">
+<code class="descname">create_query_where</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#commongroups.query.QueryMethod.create_query_where" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a query expression from a WHERE clause.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="commongroups.query.QueryMethod.describe">
+<code class="descname">describe</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#commongroups.query.QueryMethod.describe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a textual description of the query method with minimal HTML.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="commongroups.query.QueryMethod.get_literal">
+<code class="descname">get_literal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#commongroups.query.QueryMethod.get_literal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a string literal of the query expression, with bound parameters.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="commongroups.query.get_query_results">
+<code class="descclassname">commongroups.query.</code><code class="descname">get_query_results</code><span class="sig-paren">(</span><em>que</em>, <em>con</em><span class="sig-paren">)</span><a class="headerlink" href="#commongroups.query.get_query_results" title="Permalink to this definition">¶</a></dt>
+<dd><p>Execute a database query using SQLAlchemy.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>que</strong> &#8211; SQLAlchemy <code class="xref py py-class docutils literal"><span class="pre">Select</span></code> object.</li>
+<li><strong>con</strong> &#8211; SQLAlchemy database <code class="xref py py-class docutils literal"><span class="pre">Connection</span></code> object.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A pandas <code class="xref py py-class docutils literal"><span class="pre">DataFrame</span></code> containing all rows of results.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-commongroups.googlesheet">
+<span id="googlesheet-google-sheets-access"></span><h2><code class="docutils literal"><span class="pre">googlesheet</span></code> - Google Sheets access<a class="headerlink" href="#module-commongroups.googlesheet" title="Permalink to this headline">¶</a></h2>
+<p>Get compound group parameters from a Google Sheet.</p>
+<p>See <a class="reference internal" href="usage.html#googlesetup"><span class="std std-ref">Google Sheets access</span></a> for more information.</p>
+<dl class="class">
+<dt id="commongroups.googlesheet.SheetManager">
+<em class="property">class </em><code class="descclassname">commongroups.googlesheet.</code><code class="descname">SheetManager</code><span class="sig-paren">(</span><em>title</em>, <em>worksheet</em>, <em>key_file</em><span class="sig-paren">)</span><a class="headerlink" href="#commongroups.googlesheet.SheetManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Object to manage Google Sheets access.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>key_file</strong> (<em>str</em>) &#8211; Path to Google service account credentials
+JSON file.</li>
+<li><strong>title</strong> (<em>str</em>) &#8211; <em>Title</em> of the Google Sheet to open.</li>
+<li><strong>worksheet</strong> (<em>str</em>) &#8211; Title of the <em>worksheet</em> containing parameters
+within the Google Sheet.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#commongroups.errors.NoCredentialsError" title="commongroups.errors.NoCredentialsError"><code class="xref py py-class docutils literal"><span class="pre">commongroups.errors.NoCredentialsError</span></code></a> &#8211; If the API
+credentials are missing or cannot be parsed from JSON.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>Yes, we open Google Sheets <em>by title.</em>  It would be nice to open them
+by key or by URL, but that functionality in <code class="xref py py-mod docutils literal"><span class="pre">gspread</span></code> is broken
+because of the &#8220;New Sheets&#8221;.</p>
+<dl class="method">
+<dt id="commongroups.googlesheet.SheetManager.get_cmgs">
+<code class="descname">get_cmgs</code><span class="sig-paren">(</span><em>env</em><span class="sig-paren">)</span><a class="headerlink" href="#commongroups.googlesheet.SheetManager.get_cmgs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate <code class="xref py py-class docutils literal"><span class="pre">CMGroup</span></code> objects from parameters in spreadsheet rows.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>env</strong> (<a class="reference internal" href="#commongroups.env.CommonEnv" title="commongroups.env.CommonEnv"><code class="xref py py-class docutils literal"><span class="pre">commongroups.env.CommonEnv</span></code></a>) &#8211; The project environment
+that the returned objects will use to store data, etc.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Yields:</th><td class="field-body"><code class="xref py py-class docutils literal"><span class="pre">CMGroup</span></code> objects based on parameters in each row.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="commongroups.googlesheet.SheetManager.get_params">
+<code class="descname">get_params</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#commongroups.googlesheet.SheetManager.get_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read parameters and info from spreadsheet rows iteratively.</p>
+<p>Stops reading the spreadsheet when a blank row is encountered.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Yields:</th><td class="field-body">Parameters and info for each group (row), as nested dicts.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="commongroups.googlesheet.SheetManager.get_spreadsheet">
+<code class="descname">get_spreadsheet</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#commongroups.googlesheet.SheetManager.get_spreadsheet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open the spreadsheet containing CMG parameters.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The Google Sheet object.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><code class="xref py py-class docutils literal"><span class="pre">gspread.Spreadsheet</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="commongroups.googlesheet.SheetManager.params_to_json">
+<code class="descname">params_to_json</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#commongroups.googlesheet.SheetManager.params_to_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get group parameters from the worksheet and output to a JSON file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> &#8211; Path to output file.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-commongroups.hypertext">
+<span id="hypertext-generating-html-output"></span><h2><code class="docutils literal"><span class="pre">hypertext</span></code> - Generating HTML output<a class="headerlink" href="#module-commongroups.hypertext" title="Permalink to this headline">¶</a></h2>
+<p>Functions for generating HTML output.</p>
+<dl class="function">
+<dt id="commongroups.hypertext.cmg_to_html">
+<code class="descclassname">commongroups.hypertext.</code><code class="descname">cmg_to_html</code><span class="sig-paren">(</span><em>cmg</em>, <em>formats=None</em>, <em>img_source='PubChem'</em>, <em>img_size=500</em><span class="sig-paren">)</span><a class="headerlink" href="#commongroups.hypertext.cmg_to_html" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate an HTML document showing results of processing a <code class="docutils literal"><span class="pre">CMGroup</span></code>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>cmg</strong> &#8211; A <code class="xref py py-class docutils literal"><span class="pre">CMGroup</span></code> object.</li>
+<li><strong>formats</strong> (<em>list</em>) &#8211; Other formats to link to for this compound group, such
+as: <code class="docutils literal"><span class="pre">json</span></code>, <code class="docutils literal"><span class="pre">excel</span></code>, <code class="docutils literal"><span class="pre">csv</span></code>.</li>
+<li><strong>img_source</strong> (<em>str</em>) &#8211; How to generate images. Currently the only option
+is <code class="docutils literal"><span class="pre">PubChem</span></code>.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="commongroups.hypertext.describe_cmg">
+<code class="descclassname">commongroups.hypertext.</code><code class="descname">describe_cmg</code><span class="sig-paren">(</span><em>cmg</em><span class="sig-paren">)</span><a class="headerlink" href="#commongroups.hypertext.describe_cmg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate an HTML snippet describing the parameters of a CMGroup.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="commongroups.hypertext.directory">
+<code class="descclassname">commongroups.hypertext.</code><code class="descname">directory</code><span class="sig-paren">(</span><em>cmgs</em>, <em>env</em>, <em>title='Compound group processing results'</em>, <em>formats=None</em><span class="sig-paren">)</span><a class="headerlink" href="#commongroups.hypertext.directory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate an HTML directory for a collection of compound groups.</p>
+<p>Writes and HTML file in the environment&#8217;s <code class="docutils literal"><span class="pre">results/html</span></code> directory.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>cmgs</strong> &#8211; Iterable of <code class="xref py py-class docutils literal"><span class="pre">CMGroup</span></code> objects.</li>
+<li><strong>env</strong> &#8211; <code class="xref py py-class docutils literal"><span class="pre">CommonEnv</span></code> to contain output.</li>
+<li><strong>title</strong> (<em>str</em>) &#8211; Title of page.</li>
+<li><strong>formats</strong> (<em>list</em>) &#8211; List of file extensions to use to create links to other
+formats of this collection, e.g. <code class="docutils literal"><span class="pre">json</span></code>, <code class="docutils literal"><span class="pre">xlsx</span></code>.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="commongroups.hypertext.get_notes">
+<code class="descclassname">commongroups.hypertext.</code><code class="descname">get_notes</code><span class="sig-paren">(</span><em>cmg</em><span class="sig-paren">)</span><a class="headerlink" href="#commongroups.hypertext.get_notes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve <code class="docutils literal"><span class="pre">notes</span></code> from CMGroup info, if exists.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="commongroups.hypertext.info_to_context">
+<code class="descclassname">commongroups.hypertext.</code><code class="descname">info_to_context</code><span class="sig-paren">(</span><em>info</em><span class="sig-paren">)</span><a class="headerlink" href="#commongroups.hypertext.info_to_context" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert CMGroup <code class="docutils literal"><span class="pre">info</span></code> to a context for HTML templating.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="commongroups.hypertext.pubchem_image">
+<code class="descclassname">commongroups.hypertext.</code><code class="descname">pubchem_image</code><span class="sig-paren">(</span><em>cid_or_container</em>, <em>size=500</em><span class="sig-paren">)</span><a class="headerlink" href="#commongroups.hypertext.pubchem_image" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate HTML code for a PubChem molecular structure graphic and link.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>cid_or_container</strong> &#8211; The CID (int, str) or a subscriptable object that
+contains a key <code class="docutils literal"><span class="pre">cid</span></code>.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">HTML code for an image from PubChem.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-commongroups.ops">
+<span id="ops-batch-operations"></span><h2><code class="docutils literal"><span class="pre">ops</span></code> - Batch operations<a class="headerlink" href="#module-commongroups.ops" title="Permalink to this headline">¶</a></h2>
+<p>Common Groups operations.</p>
+<dl class="function">
+<dt id="commongroups.ops.batch_process">
+<code class="descclassname">commongroups.ops.</code><code class="descname">batch_process</code><span class="sig-paren">(</span><em>cmgs</em>, <em>env</em><span class="sig-paren">)</span><a class="headerlink" href="#commongroups.ops.batch_process" title="Permalink to this definition">¶</a></dt>
+<dd><p>Process compound groups in a given environment and output all results.</p>
+<p>Use the database connection provided by the environment. Output results to
+Excel (compound lists and group info) and JSON (group parameters and info).
+Create a browseable HTML directory of all groups &amp; results.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>cmgs</strong> (<em>iterable</em>) &#8211; <a class="reference internal" href="#commongroups.cmgroup.CMGroup" title="commongroups.cmgroup.CMGroup"><code class="xref py py-class docutils literal"><span class="pre">commongroups.cmgroup.CMGroup</span></code></a> objects to
+process.</li>
+<li><strong>env</strong> (<a class="reference internal" href="#commongroups.env.CommonEnv" title="commongroups.env.CommonEnv"><code class="xref py py-class docutils literal"><span class="pre">commongroups.env.CommonEnv</span></code></a>) &#8211; Environment.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">List of processed compound groups.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="commongroups.ops.cmgs_from_file">
+<code class="descclassname">commongroups.ops.</code><code class="descname">cmgs_from_file</code><span class="sig-paren">(</span><em>env</em>, <em>path</em>, <em>filetype=None</em><span class="sig-paren">)</span><a class="headerlink" href="#commongroups.ops.cmgs_from_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate compound group objects from a file.</p>
+<p>Only the defining parameters and descriptive information for each compound
+group are imported from the file. Importing lists of compounds for already
+populated groups is <em>not supported.</em></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>env</strong> (<a class="reference internal" href="#commongroups.env.CommonEnv" title="commongroups.env.CommonEnv"><code class="xref py py-class docutils literal"><span class="pre">commongroups.env.CommonEnv</span></code></a>) &#8211; The project environment.
+Determines the environment used for the <code class="xref py py-class docutils literal"><span class="pre">CMGroup</span></code> objects.</li>
+<li><strong>path</strong> (<em>str</em>) &#8211; Path to a file containing parameters, and optionally
+other <code class="docutils literal"><span class="pre">info</span></code>, for a number of CMGs.</li>
+<li><strong>filetype</strong> (<em>str</em>) &#8211; Type of file; required only if path does not have a
+file extension.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Yields:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#commongroups.cmgroup.CMGroup" title="commongroups.cmgroup.CMGroup"><code class="xref py py-class docutils literal"><span class="pre">commongroups.cmgroup.CMGroup</span></code></a> objects.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="commongroups.ops.cmgs_from_googlesheet">
+<code class="descclassname">commongroups.ops.</code><code class="descname">cmgs_from_googlesheet</code><span class="sig-paren">(</span><em>env</em><span class="sig-paren">)</span><a class="headerlink" href="#commongroups.ops.cmgs_from_googlesheet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate compound group objects from parameters given in a Google Sheet.</p>
+<p>Use the Google Sheets source referenced in the environment&#8217;s configuration.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>env</strong> (<a class="reference internal" href="#commongroups.env.CommonEnv" title="commongroups.env.CommonEnv"><code class="xref py py-class docutils literal"><span class="pre">commongroups.env.CommonEnv</span></code></a>) &#8211; Environment to use for all
+generated groups and for identifying the Google Sheet.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Generator yielding <a class="reference internal" href="#commongroups.cmgroup.CMGroup" title="commongroups.cmgroup.CMGroup"><code class="xref py py-class docutils literal"><span class="pre">commongroups.cmgroup.CMGroup</span></code></a> objects.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="commongroups.ops.collect_to_json">
+<code class="descclassname">commongroups.ops.</code><code class="descname">collect_to_json</code><span class="sig-paren">(</span><em>cmgs</em>, <em>env</em>, <em>filename=None</em><span class="sig-paren">)</span><a class="headerlink" href="#commongroups.ops.collect_to_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write parameters and info for a number of compound groups to a JSON file.</p>
+<p>The output is written to <code class="docutils literal"><span class="pre">cmgroups.json</span></code> (or other filename if specified)
+in the project environment&#8217;s <code class="docutils literal"><span class="pre">results</span></code> directory.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>cmgs</strong> (<em>iterable</em>) &#8211; <a class="reference internal" href="#commongroups.cmgroup.CMGroup" title="commongroups.cmgroup.CMGroup"><code class="xref py py-class docutils literal"><span class="pre">commongroups.cmgroup.CMGroup</span></code></a> objects to write.</li>
+<li><strong>env</strong> (<a class="reference internal" href="#commongroups.env.CommonEnv" title="commongroups.env.CommonEnv"><code class="xref py py-class docutils literal"><span class="pre">commongroups.env.CommonEnv</span></code></a>) &#8211; Project environment.</li>
+<li><strong>filename</strong> (<em>str</em>) &#8211; Optional alternative filename.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="run-the-run-script">
+<h2><code class="docutils literal"><span class="pre">run</span></code> - The run script<a class="headerlink" href="#run-the-run-script" title="Permalink to this headline">¶</a></h2>
+<p>See <a class="reference internal" href="usage.html"><span class="doc">Usage</span></a>.</p>
+<span class="target" id="module-commongroups.run"></span><p>Automatically populate compound groups using a chemical database.</p>
+<p>Invoking this module runs a collection of commongroups operations:</p>
+<ul class="simple">
+<li>Read compound group definitions either from the web (Google Sheets) or
+from a JSON file if specified.</li>
+<li>Compile and perform database queries based on group definitions.</li>
+<li>Output results to Excel and JSON and create a browseable HTML directory.</li>
+</ul>
+<dl class="function">
+<dt id="commongroups.run.create_parser">
+<code class="descclassname">commongroups.run.</code><code class="descname">create_parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#commongroups.run.create_parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create command-line argument parser.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="commongroups.run.main">
+<code class="descclassname">commongroups.run.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#commongroups.run.main" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run commongroups operations.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="commongroups.run.print_version_info">
+<code class="descclassname">commongroups.run.</code><code class="descname">print_version_info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#commongroups.run.print_version_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print information about the program to the console.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="commongroups.run.set_console_loglevel">
+<code class="descclassname">commongroups.run.</code><code class="descname">set_console_loglevel</code><span class="sig-paren">(</span><em>level</em><span class="sig-paren">)</span><a class="headerlink" href="#commongroups.run.set_console_loglevel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Change console log level from default (INFO), if specified.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-commongroups.errors">
+<span id="errors-exceptions"></span><h2><code class="docutils literal"><span class="pre">errors</span></code> - Exceptions<a class="headerlink" href="#module-commongroups.errors" title="Permalink to this headline">¶</a></h2>
+<p>Special errors for commongroups.</p>
+<dl class="exception">
+<dt id="commongroups.errors.CommonError">
+<em class="property">exception </em><code class="descclassname">commongroups.errors.</code><code class="descname">CommonError</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#commongroups.errors.CommonError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">Exception</span></code></p>
+<p>Base Exception for all commongroups errors.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="commongroups.errors.MissingParamError">
+<em class="property">exception </em><code class="descclassname">commongroups.errors.</code><code class="descname">MissingParamError</code><span class="sig-paren">(</span><em>param</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#commongroups.errors.MissingParamError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#commongroups.errors.CommonError" title="commongroups.errors.CommonError"><code class="xref py py-class docutils literal"><span class="pre">commongroups.errors.CommonError</span></code></a></p>
+<p>Raised upon failure to access a configuration or group parameter.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="commongroups.errors.NoCredentialsError">
+<em class="property">exception </em><code class="descclassname">commongroups.errors.</code><code class="descname">NoCredentialsError</code><span class="sig-paren">(</span><em>path</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#commongroups.errors.NoCredentialsError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#commongroups.errors.CommonError" title="commongroups.errors.CommonError"><code class="xref py py-class docutils literal"><span class="pre">commongroups.errors.CommonError</span></code></a></p>
+<p>Raised when the Google API credentials file cannot be read.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="tests-tests">
+<h2><code class="docutils literal"><span class="pre">tests</span></code> - Tests<a class="headerlink" href="#tests-tests" title="Permalink to this headline">¶</a></h2>
+<p>This package includes a suite of unit tests. Currently, the included tests only
+cover the architecture of the program itself, and not the logic of SQL queries
+against the database.</p>
+<p>With <a class="reference external" href="https://docs.pytest.org/en/latest/">pytest</a>, tests can be run on the installed package using:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pytest</span> <span class="o">--</span><span class="n">pyargs</span> <span class="n">commongroups</span>
+</pre></div>
+</div>
+<p>Or on the source code (without installing) by running:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">test</span>
+</pre></div>
+</div>
+<p>For <em>all</em> of the tests to pass, you must have a <a class="reference internal" href="database.html"><span class="doc">database</span></a>
+already set up, the PostgreSQL server must be running; your <code class="docutils literal"><span class="pre">commongroups</span></code>
+environment must be <a class="reference internal" href="usage.html#config"><span class="std std-ref">configured</span></a> to allow the program to access
+this database <em>and</em> to access a <a class="reference internal" href="usage.html#googlesetup"><span class="std std-ref">Google Spreadsheet</span></a>
+containing test parameters. Please contact the authors if you want to run tests
+yourself and would like a sample spreadsheet.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2016, Akos Kokai, Michel Dedeo, and Fred Cauthen.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/developer.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Introduction &#8212; Common Groups 2017.4.4 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2017.4.4',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Design" href="design.html" />
+    <link rel="prev" title="Common Groups" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Common Groups</a></h1>
+
+
+
+<p class="blurb">Molecular structure-based classification of chemicals</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#purpose">Purpose</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#frequently-asked-questions">Frequently asked questions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="design.html">Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="credits.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer.html">Developer reference</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Common Groups</a></li>
+      <li>Next: <a href="design.html" title="next chapter">Design</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<p><strong>Common Groups</strong> is a project for molecular structure-based classification of
+chemical substances into groups with known environmental health hazards. This is
+part of a broader effort to develop information infrastructure for chemical
+hazard assessment and alternatives assessment.</p>
+<p>This documentation is specifically about <code class="docutils literal"><span class="pre">commongroups</span></code>, a software package
+written in Python. It provides computational methods to identify sets of
+chemicals belonging to structurally-defined classes.</p>
+<div class="section" id="purpose">
+<h2>Purpose<a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h2>
+<p>Certain <em>groups</em> or <em>classes</em> of chemical substances are of interest for their
+environmental or toxicological hazard characteristics. Chemical <a class="reference external" href="https://www.greenscreenchemicals.org/learn/greenscreen-list-translator">hazard
+screening methods</a> and regulatory agencies reference several hundred such
+groups. However, determining the actual set of substances that might belong to
+each group is usually left up to someone else.</p>
+<p>The Common Groups project aims to address this gap though the collaborative
+development of molecular structure-based &#8220;definitions&#8221; for chemical groups of
+interest, supported by software tools and shared information resources. The
+collaborative effort will be convened and documented by the <a class="reference external" href="https://commons.healthymaterials.net/">Chemical Hazard
+Data Commons</a>.</p>
+<p>The goal of the Common Groups software tool is to apply basic cheminformatics
+techniques to:</p>
+<ul class="simple">
+<li>Find all substances within a larger set that belong to a given group.</li>
+<li>Classify individual substances into the correct group(s).</li>
+<li>Perform these functions automatically for a large number of groups all at
+once.</li>
+</ul>
+<p>We imagine the possible applications of this project to include answering
+questions such as: <em>What dithiocarbamates are in this list of compounds?</em> or
+<em>Does this new compound belong to any chemical groups associated with endocrine
+disruption?</em></p>
+</div>
+<div class="section" id="frequently-asked-questions">
+<h2>Frequently asked questions<a class="headerlink" href="#frequently-asked-questions" title="Permalink to this headline">¶</a></h2>
+<p><strong>Does this program use structural similarity searching?</strong> No, it uses
+substructure matching. The idea is that the groups of chemicals we want to
+identify are defined by precise criteria, rather than inferred by similarity. We
+see this approach as complementary to similarity searching methods, with each
+approach having different advantages.</p>
+<p><strong>Is this a tool for identifying toxicophores?</strong> No. Toxicophore identification
+is part of the rational basis for defining groups of substances by structure,
+and is therefore a background condition, not a function, of this project.</p>
+<p><strong>Isn&#8217;t this project limited by the current state of knowledge linking
+individual groups of chemicals to individual hazard endpoints?</strong> Yes. The
+purpose of this project is not to create new knowledge <em>about</em> compound groups,
+but to identify potentially new <em>associations</em> between specific compounds and
+hazards, based on existing knowledge.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2016, Akos Kokai, Michel Dedeo, and Fred Cauthen.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/intro.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
