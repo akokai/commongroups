@@ -16,7 +16,7 @@ logger = logging.getLogger(__name__)  # pylint: disable=invalid-name
 
 def cmgs_from_googlesheet(env):
     """
-    Generate ``CMGroup`` objects from parameters given in a Google Sheet.
+    Generate compound group objects from parameters given in a Google Sheet.
 
     Use the Google Sheets source referenced in the environment's configuration.
 
@@ -45,7 +45,7 @@ def cmgs_from_googlesheet(env):
 # TODO: Import group definitions from spreadsheet file.
 def cmgs_from_file(env, path, filetype=None):
     """
-    Generate :class:`CMGroup` objects from a file.
+    Generate compound group objects from a file.
 
     Only the defining parameters and descriptive information for each compound
     group are imported from the file. Importing lists of compounds for already
@@ -78,10 +78,13 @@ def cmgs_from_file(env, path, filetype=None):
 
 def collect_to_json(cmgs, env, filename=None):
     """
-    Write parameters and info for a number of CMGroups to a single JSON file.
+    Write parameters and info for a number of compound groups to a JSON file.
+
+    The output is written to ``cmgroups.json`` (or other filename if specified)
+    in the project environment's ``results`` directory.
 
     Parameters:
-        cmgs (iterable): The compound group objects to write to JSON.
+        cmgs (iterable): :class:`commongroups.cmgroup.CMGroup` objects to write.
         env (:class:`commongroups.env.CommonEnv`): Project environment.
         filename (str): Optional alternative filename.
     """
@@ -102,7 +105,8 @@ def batch_process(cmgs, env):
     Create a browseable HTML directory of all groups & results.
 
     Parameters:
-        cmgs: Iterable of :class:`commongroups.cmgroup.CMGroup`s to process.
+        cmgs (iterable): :class:`commongroups.cmgroup.CMGroup` objects to
+            process.
         env (:class:`commongroups.env.CommonEnv`): Environment.
 
     Returns:

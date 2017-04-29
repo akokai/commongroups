@@ -77,8 +77,8 @@ Currently, for ``commongroups`` to be able to use a database, it must contain a
 table or view called ``compounds``, which in turn must contain a column called
 ``molecule``, containing molecular structures in the RDKit ``mol`` data type.
 Furthermore, for HTML display of compound groups, the program currently assumes
-that there is a ``cid`` column in ``compounds`` containing the PubChem CID for
-each substance.
+that ``compounds`` contains the following columns: ``cid`` (PubChem CID, also
+used for images), ``casrn``, and ``dtxsid``. This may change in future versions.
 
 The database produced by our automatic installation script satisfies these
 requirements.

@@ -40,10 +40,10 @@ This document is organized by module. For source code, see the `repository`_.
    :members:
    :show-inheritance:
 
-``errors`` - Exceptions
------------------------
+``ops`` - Batch operations
+--------------------------
 
-.. automodule:: commongroups.errors
+.. automodule:: commongroups.ops
    :members:
    :show-inheritance:
 
@@ -56,6 +56,13 @@ See :doc:`usage`.
    :members:
    :show-inheritance:
 
+``errors`` - Exceptions
+-----------------------
+
+.. automodule:: commongroups.errors
+   :members:
+   :show-inheritance:
+
 ``tests`` - Tests
 -----------------
 
@@ -63,7 +70,7 @@ This package includes a suite of unit tests. Currently, the included tests only
 cover the architecture of the program itself, and not the logic of SQL queries
 against the database.
 
-Tests can be run on the installed package using::
+With `pytest`_, tests can be run on the installed package using::
 
    pytest --pyargs commongroups
 
@@ -77,3 +84,5 @@ environment must be :ref:`configured <config>` to allow the program to access
 this database *and* to access a :ref:`Google Spreadsheet <googlesetup>`
 containing test parameters. Please contact the authors if you want to run tests
 yourself and would like a sample spreadsheet.
+
+.. _pytest: https://docs.pytest.org/en/latest/
