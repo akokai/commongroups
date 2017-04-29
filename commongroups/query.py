@@ -10,20 +10,22 @@ from pandas import DataFrame
 # from rdkit import Chem, rdBase
 # from rdkit.Chem import AllChem, Draw, rdqueries, rdMolDescriptors
 
-from sqlalchemy import select, table, text  # and_, or_, not_
+from sqlalchemy import select, column, table, text  # and_, or_, not_
 
 from commongroups.errors import MissingParamError
 from commongroups import logconf  # pylint: disable=unused-import
 logger = logging.getLogger(__name__)  # pylint: disable=invalid-name
 
-# Names of database table & column containing searchable structures are
-# hard-coded for now, but could be made part of CommonEnv config.
+# Names of relevant database table & columns are hard-coded for now, but could
+# be specified in config.
 REL = 'compounds'
 MOL = 'compounds.molecule'
-
-REQUIRED_PARAMS = ['method', 'structure_type', 'structure']
+ORD = 'compounds.dtxsid'
 
 TABLE = table(REL)
+ORD_COL = column(ORD, is_literal=True)
+
+REQUIRED_PARAMS = ['method', 'structure_type', 'structure']
 
 
 class QueryMethod(object):
@@ -45,6 +47,7 @@ class QueryMethod(object):
         where_txt = self.params['code'].replace(':m', MOL)
         clause = text(where_txt).bindparams(s=self.params['structure'])
         que = select([text('*')]).select_from(TABLE).where(clause)
+        que = que.order_by(ORD_COL)
         self.expression = que
 
     def get_literal(self):
